@@ -7,9 +7,9 @@
           <input ref="writeArea" v-model="addItemText" type="text" @keyup.enter="addItem"/>
           <button class="btn add" @click="addItem">Add</button>
         </div>
-        <ul v-for="item in todos" class="list" :key="item.text">
+        <ul  v-for="(item,i) in todos" class="list" :key="item.text">
           <li>
-            <i  :class="[item.state==='yet'? 'far':'fas','fa-check-square' ]"></i>
+            <i  @click="checkItem(i)" :class="[item.state==='yet'? 'far':'fas','fa-check-square' ]"></i>
             <span>
               {{item.text}}
               <b>
@@ -42,11 +42,20 @@ export default {
         }
     },
     methods:{
-      addItem(){
-        if (this.addItemText==='') return;
+      addItem(ev){
+        if (ev.target==='') return;
         this.todos.push({text:this.addItemText,state:'yet'})
         this.addItemText='';
       },
+      checkItem(i){
+        if (this.todos[i].state==='yet') {
+          this.todos[i].state='done';
+        }else{
+          this.todos[i].state='yet';
+        }
+  
+      },
+
     },
     mounted(){
       this.$refs.writeArea.focus();
