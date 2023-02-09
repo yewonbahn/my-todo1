@@ -45,7 +45,7 @@ h1 {font-family: 'Signika', serif;}
     vertical-align: middle;
 }
 .todos .write > button {margin-right:-2px; vertical-align: middle;}
-.todos ul > li {margin:10px 0}
+.todos ul > li {margin:10px 0; font-family:'Signika'}
 .todos ul > li > span {padding-right:60px; position: relative;}
 .todos ul > li > span:hover b {visibility: visible; opacity:1;}
 .todos ul > li > span b {margin-left: 20px; font-size:10px; position: absolute; bottom:5px; right:0; visibility: hidden; opacity:0;}
