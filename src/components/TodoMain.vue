@@ -4,7 +4,7 @@
     <main>
       <div class="todos">
         <div class="write">
-          <input  v-model="addItemText" type="text"/>
+          <input ref="writeArea" v-model="addItemText" type="text" @keyup.enter="addItem"/>
           <button class="btn add" @click="addItem">Add</button>
         </div>
         <ul v-for="item in todos" class="list" :key="item.text">
@@ -28,7 +28,7 @@
 export default {
     data(){
         return{
-          addItemText:"",
+          addItemText:'',
           todos:[
           {text: '공부하기', state: 'yet'},
           {text: '운동하기', state: 'done'},
@@ -43,9 +43,15 @@ export default {
     },
     methods:{
       addItem(){
+        if (this.addItemText==='') return;
         this.todos.push({text:this.addItemText,state:'yet'})
+        this.addItemText='';
       },
+    },
+    mounted(){
+      this.$refs.writeArea.focus();
     }
+
 
 }
 </script>
